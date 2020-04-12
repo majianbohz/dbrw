@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yinyu.mapper.UserMapper">
+
+    <select id="queryUser" resultType="com.yinyu.entity.User">
+        select id, name from user where id > 0
+    </select>
+
+    <insert id="addUser" parameterType="com.yinyu.entity.User" useGeneratedKeys="true" keyProperty="id">
+        insert into user(name) values("zhangshan")
+    </insert>
+
+    <update id="updateUser" parameterType="com.yinyu.entity.User">
+        update user
+        <set>
+            name = #{name},
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>
