@@ -25,6 +25,9 @@ import java.util.Properties;
 public class MybatisDataSourceInterceptor implements Interceptor {
   @Override
   public Object intercept(Invocation invocation) throws Throwable {
+
+    DataSourceHolder.putDataSource(DataSourceHolder.WRITE_DATASOURCE);
+
     boolean synchronizationActive = TransactionSynchronizationManager.isSynchronizationActive();
     if(!synchronizationActive) {
       Object[] objects = invocation.getArgs();
